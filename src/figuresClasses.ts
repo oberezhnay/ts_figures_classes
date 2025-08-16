@@ -16,12 +16,20 @@ export class Triangle implements Figure {
     public b: number,
     public c: number,
   ) {
-    if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error(`Side must be bigger than 0`);
+    if (a <= 0) {
+      throw new Error(`Invalid side length 'a' = ${a}. Side  must be bigger than 0`);
+    }
+
+    if (b <= 0) {
+      throw new Error(`Invalid side length 'b' = ${b}. Side  must be bigger than 0`);
+    }
+
+    if (c <= 0) {
+      throw new Error(`Invalid side length 'c' = ${c}. Side  must be bigger than 0`);
     }
 
     if (Math.max(a, b, c) >= a + b + c - Math.max(a, b, c)) {
-      throw new Error(`This sides can't form a triangle`);
+      throw new Error(`nvalid triangle: the longest side is greater than or equal to the sum of the other two sides.`);
     }
   }
 
@@ -63,8 +71,12 @@ export class Rectangle implements Figure {
     public width: number,
     public height: number,
   ) {
-    if (width <= 0 || height <= 0) {
-      throw new Error(`Parameter must be bigger than 0`);
+    if (width <= 0) {
+      throw new Error(`Invalid width: ${width}. Width must be bigger than 0`);
+    }
+
+    if (height <= 0) {
+      throw new Error(`Invalid height: ${height}. Height must be bigger than 0`);
     }
   }
 
